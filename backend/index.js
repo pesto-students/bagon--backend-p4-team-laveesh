@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
-const PORT = 3000;
+const PORT = 3001;
 const userRoute = require("./routes/userRoute");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 
