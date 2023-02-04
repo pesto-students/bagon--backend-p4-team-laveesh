@@ -3,6 +3,8 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const PORT = 3001;
 const userRoute = require("./routes/userRoute");
+const destinationRoute = require("./routes/destinationRoute");
+const placeRoute = require("./routes/placeRoute");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 
 const app = express();
@@ -15,7 +17,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", userRoute);
-
+app.use("/api/destination", destinationRoute)
+app.use("/api/places", placeRoute)
 app.use(notFound);
 app.use(errorHandler);
 
