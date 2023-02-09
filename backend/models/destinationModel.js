@@ -11,10 +11,11 @@ const destinationSchema = mongoose.Schema(
       required: true,
     },
     image: {
-      type: Array,
-      required: true,
+        type: Array,
+        required: true
+      }
     },
-  },
+  
   {
     timestamps: true,
   }

@@ -1,4 +1,5 @@
 const express = require("express");
+const cors= require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const PORT = 3001;
@@ -8,6 +9,7 @@ const placeRoute = require("./routes/placeRoute");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 
 const app = express();
+app.use(cors());
 dotenv.config();
 connectDB();
 app.use(express.json());

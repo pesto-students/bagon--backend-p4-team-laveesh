@@ -1,6 +1,6 @@
 const Destination = require("../models/destinationModel");
 const asyncHandler = require("express-async-handler");
-
+const cloudinary= require("../utils/cloudinary");
 
 const getDestination = asyncHandler(async (req, res) => {
     const destination = await Destination.find();
@@ -10,13 +10,16 @@ const getDestination = asyncHandler(async (req, res) => {
 const registerDestination = asyncHandler(async (req, res) => {
     const { destinationName, description, image } = req.body;
   
-    if (!destinationName || !description || !image) {
+    if (!destinationName || !description || !imageDest) {
         res.status(400);
         throw new Error("Please Fill all the feilds");
         return;
       } else {
         const destination = new Destination({ destinationName, description, image });
-    
+        
+        const imageDest = await cloudinary.uploader.upload(image, {
+          folders : 'placesAndDest',          
+        })
         const createdDestination = await destination.save();
     
         res.status(201).json(createdDestination);
